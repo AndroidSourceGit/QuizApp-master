@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 time.setText("done!");
-
+                databaseAccess.open();
+                databaseAccess.updateData(quid + 1, "");
+                databaseAccess.close();
                 if(quid<10){
                     currentQuestionModel = questionModelList.get(quid);
                     setQuestionView();
