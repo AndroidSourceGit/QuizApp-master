@@ -71,6 +71,9 @@ public class ResultActivity extends AppCompatActivity {
         /*databaseAccess.open();
         databaseAccess.deleteData();
         databaseAccess.close();*/
+        startActivity(new Intent(ResultActivity.this,MainActivity.class));
+        finish();
+
     }
 
     @Override
