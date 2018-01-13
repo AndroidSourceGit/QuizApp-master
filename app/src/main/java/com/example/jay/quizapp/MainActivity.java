@@ -116,18 +116,20 @@ public class MainActivity extends AppCompatActivity {
 
         if(grp.getCheckedRadioButtonId()==-1){
             databaseAccess.open();
-            databaseAccess.updateData(quid + 1, "");
+            databaseAccess.updateData(quid , "");
             databaseAccess.close();
         }else {
             databaseAccess.open();
-            databaseAccess.updateData(quid + 1, answer.getText().toString());
+            databaseAccess.updateData(quid , answer.getText().toString());
             databaseAccess.close();
+
+            if(currentQuestionModel.getAnswer().equalsIgnoreCase(answer.getText().toString())){
+                score++;
+                Log.d("Score", "Your score: "+score);
+            }
         }
 
-        if(currentQuestionModel.getAnswer().equalsIgnoreCase(answer.getText().toString())){
-            score++;
-            Log.d("Score", "Your score: "+score);
-        }
+
 
         if(quid<10){
             currentQuestionModel = questionModelList.get(quid);
