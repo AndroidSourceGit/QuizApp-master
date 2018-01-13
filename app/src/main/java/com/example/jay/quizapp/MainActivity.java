@@ -74,9 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 time.setText("done!");
+
                 databaseAccess.open();
                 databaseAccess.updateData(quid + 1, "");
                 databaseAccess.close();
+
                 if(quid<10){
                     currentQuestionModel = questionModelList.get(quid);
                     setQuestionView();
@@ -121,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
             databaseAccess.updateData(quid + 1, answer.getText().toString());
             databaseAccess.close();
         }
+
         if(currentQuestionModel.getAnswer().equalsIgnoreCase(answer.getText().toString())){
             score++;
             Log.d("Score", "Your score: "+score);
@@ -129,6 +132,10 @@ public class MainActivity extends AppCompatActivity {
         if(quid<10){
             currentQuestionModel = questionModelList.get(quid);
             setQuestionView();
+
+            countDownTimer.cancel();
+            countDownTimer.start();
+            
         }else{
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             Bundle b = new Bundle();
@@ -138,8 +145,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        countDownTimer.cancel();
-        countDownTimer.start();
+
     }
 
     @Override
