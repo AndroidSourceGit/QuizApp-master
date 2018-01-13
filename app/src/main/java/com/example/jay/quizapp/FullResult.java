@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.jay.quizapp.Database.DatabaseAccess;
@@ -69,11 +70,26 @@ public class FullResult extends AppCompatActivity {
     }
 
     private void setQuestionView() {
+        RadioGroup grp = (RadioGroup)findViewById(R.id.radioGroup1);
+        grp.setEnabled(false);
+       // RadioButton answer = (RadioButton)findViewById(grp.getCheckedRadioButtonId());
+
         txtQuestion.setText("QUE - " + (quid+1) + " ) " + currentQuestionModel.getQuestion());
         rda.setText(currentQuestionModel.getA());
         rdb.setText(currentQuestionModel.getB());
         rdc.setText(currentQuestionModel.getC());
         rdd.setText(currentQuestionModel.getD());
+
+        if(rda.getText().toString().equalsIgnoreCase(currentQuestionModel.getAnswer().toString())){
+            rda.setChecked(true);
+        }else if(rdb.getText().toString().equalsIgnoreCase(currentQuestionModel.getAnswer().toString())){
+            rdb.setChecked(true);
+        }else if(rdc.getText().toString().equalsIgnoreCase(currentQuestionModel.getAnswer().toString())){
+            rdc.setChecked(true);
+        }else if(rdd.getText().toString().equalsIgnoreCase(currentQuestionModel.getAnswer().toString())){
+            rdd.setChecked(true);
+        }
+
         givensnswer.setText("Your Answer : "+currentQuestionModel.getGivenanswer());
         quid++;
     }

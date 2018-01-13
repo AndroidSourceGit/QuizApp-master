@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
             countDownTimer.cancel();
             countDownTimer.start();
-            
+
         }else{
             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
             Bundle b = new Bundle();
