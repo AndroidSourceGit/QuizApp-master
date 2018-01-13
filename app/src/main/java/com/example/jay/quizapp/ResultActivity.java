@@ -68,9 +68,9 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        databaseAccess.open();
+        /*databaseAccess.open();
         databaseAccess.deleteData();
-        databaseAccess.close();
+        databaseAccess.close();*/
     }
 
     @Override
